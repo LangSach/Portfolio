@@ -254,48 +254,8 @@
       <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script></script>
     <script src="fether.js"></script>
-    <script>
-const supabaseUrl = "https://uahvdjovqqqojfqdolpx.supabase.co"; // 🔴 thay URL của bạn
-const supabaseKey = "sb_publishable_67owKfIftS4ryvPbf1mi3g_8Bla3BHh"; // 🔴 thay key của bạn
-
-const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-);
-</script>
-<script>
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const btn = this.querySelector('button');
-    btn.innerHTML = 'Sending...';
-
-    const fullName = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
-
-    const { error } = await supabase
-        .from('contacts')
-        .insert([
-            {
-                full_name: fullName,
-                email: email,
-                message: message
-            }
-        ]);
-
-    if (error) {
-        btn.innerHTML = 'Failed ❌';
-        btn.style.background = '#dc3545';
-        console.error(error);
-    } else {
-        btn.innerHTML = 'Sent Successfully ✔';
-        btn.style.background = '#28a745';
-        this.reset();
-    }
-});
-</script>
-<script></script>
+   
 
 </body>
+
 </html>
