@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="l.css">
+    <title>Lang_Ha | Full-Stack Portfolio</title>
+    
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<body>
+    <canvas id="raven-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
+<div id="cursor-core"></div>
+    <header id="header">
+        <a href="#" class="logo">Lăng_Hạ</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+        <div class="home-content" data-aos="fade-right">
+            <h3>Chào mừng, tôi là</h3>
+            <h1>Lăng_Hạ</h1>
+            <div class="typing-container">
+                Tôi là <span class="typing-text"></span>
+            </div>
+            <p style="font-size: 1.7rem; color: var(--muted); margin-bottom: 3rem; max-width: 550px;">
+                Tôi xây dựng các ứng dụng web hiệu suất cao với sự tập trung vào mã nguồn sạch và trải nghiệm người dùng vượt trội. Biến ý tưởng thành hiện thực số.
+            </p>
+            <div class="social-icons" style="margin-bottom: 3.5rem;">
+                <a href="https://github.com/LangSach" style="color: white; font-size: 2.6rem; margin-right: 2.5rem; transition: 0.3s;" onmouseover="this.style.color='#b04cff'; this.style.textShadow='0 0 12px rgba(176,76,255,0.28)'" onmouseout="this.style.color='white'; this.style.textShadow='none'"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/montersky-emd-68b2453a3/" style="color: white; font-size: 2.6rem; margin-right: 2.5rem; transition: 0.3s;" onmouseover="this.style.color='#b04cff'; this.style.textShadow='0 0 12px rgba(176,76,255,0.28)'" onmouseout="this.style.color='white'; this.style.textShadow='none'"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://x.com/TinPhm251759" style="color: white; font-size: 2.6rem; margin-right: 2.5rem;" onmouseover="this.style.color='#b04cff'; this.style.textShadow='0 0 12px rgba(176,76,255,0.28)'" onmouseout="this.style.color='white'; this.style.textShadow='none'"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.facebook.com/pham.tien.154995/" style="color: white; font-size: 2.6rem; transition: 0.3s;" onmouseover="this.style.color='#b04cff'; this.style.textShadow='0 0 12px rgba(176,76,255,0.28)'" onmouseout="this.style.color='white'; this.style.textShadow='none'"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <div class="home-img" data-aos="zoom-in">
+            <div class="home-img-circle">
+                <img src="avatar.png" alt="26 tuổi Full-Stack Developer">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="heading" data-aos="fade-up">Dịch vụ <span>Chuyên môn</span></h2>
+        <div class="services-container">
+            <div class="service-box" data-aos="fade-up">
+                <i class="fa-solid fa-code"></i>
+                <h3>Full-Stack Development</h3>
+                <p>Giải pháp web toàn diện sử dụng các công nghệ hiện đại như MERN và Next.js.</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="150">
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>UI/UX Architecture</h3>
+                <p>Thiết kế hành trình người dùng trực quan, tập trung vào tính thẩm mỹ và khả năng truy cập.</p>
+            </div>
+            <div class="service-box" data-aos="fade-up" data-aos-delay="300">
+                <i class="fa-solid fa-server"></i>
+                <h3>Data Sciencetis</h3>
+                <p>Xây dựng các mô hình phân tích dữ liệu và học máy để hỗ trợ ra quyết định kinh doanh.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="heading" data-aos="fade-up">Kỹ năng <span>Công nghệ</span></h2>
+        <div class="skills-container">
+            <div class="skills-radar" data-aos="fade-right">
+                <canvas id="radarChart"></canvas>
+                
+                <img src="avatar.png" alt="Avatar decoration" loading="lazy" class="skills-decor" aria-hidden="true">
+            </div>
+
+            <div class="skills-list" data-aos="fade-left">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Frontend Development</span>
+                        <span class="percent">92%</span>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar-progress" data-percent="92"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Backend Development</span>
+                        <span class="percent">88%</span>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar-progress" data-percent="88"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>UI/UX Design</span>
+                        <span class="percent">85%</span>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar-progress" data-percent="85"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Database Management</span>
+                        <span class="percent">80%</span>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar-progress" data-percent="80"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>DEV</span>
+                        <span class="percent">75%</span>
+                    </div>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar-progress" data-percent="75"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="heading" data-aos="fade-up">Dự án <span>Tiêu biểu</span></h2>
+        <div class="projects-grid">
+            <div class="project-card" data-aos="zoom-in">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="SaaS Project">
+                </div>
+                <div class="project-content">
+                    <h3>Analytics Dashboard</h3>
+                    <p>Nền tảng trực quan hóa dữ liệu thời gian thực để theo dõi hiệu suất máy chủ.</p>
+                    <div class="project-tags">
+                        <span>React</span><span>Chart.js</span><span>AWS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&q=80" alt="E-com Project">
+                </div>
+                <div class="project-content">
+                    <h3>NexStore Marketplace</h3>
+                    <p>Trang thương mại điện tử đa người bán với thanh toán Stripe bảo mật.</p>
+                    <div class="project-tags">
+                        <span>Next.js</span><span>Prisma</span><span>Tailwind</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="App Project">
+                </div>
+                <div class="project-content">
+                    <h3>ZenFit Mobile</h3>
+                    <p>Ứng dụng theo dõi sức khỏe với các bài tập cá nhân hóa và tính năng xã hội.</p>
+                    <div class="project-tags">
+                        <span>React Native</span><span>Redux</span><span>Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="heading" data-aos="fade-up">Hành trình <span>Kinh nghiệm</span></h2>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-up">
+                <h3 style="color: var(--accent);">Senior Software Engineer @ InnovateHub</h3>
+                <span style="font-size: 1.4rem; color: var(--muted);">2022 - Hiện tại</span>
+                <p style="margin-top: 1rem;">Dẫn dắt phát triển cơ sở hạ tầng cốt lõi và hướng dẫn các lập trình viên trẻ về các quy chuẩn phát triển tốt nhất.</p>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <h3 style="color: var(--accent);">Full Stack Developer @ CreativeScale</h3>
+                <span style="font-size: 1.4rem; color: var(--muted);">2020 - 2022</span>
+                <p style="margin-top: 1rem;">Xây dựng các giải pháp front-end có khả năng mở rộng và tối ưu hóa truy vấn cơ sở dữ liệu nhanh hơn 40%.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="heading" data-aos="zoom-in">Liên hệ với <span>Tôi</span></h2>
+        <div class="contact-container" data-aos="fade-up">
+            <form id="contact-form">
+                <div class="input-group">
+                    <input type="text" placeholder="Tên của bạn" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" placeholder="Địa chỉ Email" required>
+                </div>
+                <div class="input-group">
+                    <textarea rows="6" placeholder="Chi tiết dự án hoặc lời chào..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Gửi tin nhắn</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Được thiết kế với ❤️ bởi <strong>Lang_Ha</strong> &copy; 2026. Code with passion.</p>
+    </footer>
+
+    <button id="settings-toggle" aria-label="Open settings" aria-expanded="false"><i class="fa-solid fa-gear"></i></button>
+
+    <div id="settings-panel" aria-hidden="true" role="dialog" aria-label="Site settings" aria-modal="true">
+        <div class="panel-head">
+            <h4>Settings</h4>
+            <button id="settings-close" aria-label="Close settings">&times;</button>
+        </div>
+        <div class="panel-body">
+            <div style="font-weight:600; margin-bottom:0.6rem; color: rgba(255,255,255,0.85);">Theme</div>
+            <div class="theme-option" data-theme="purple" tabindex="0">
+                <div class="theme-swatch purple" aria-hidden="true"></div>
+                <div class="theme-label">Purple</div>
+                <div class="switch"><button class="theme-select-btn" data-theme="purple" aria-pressed="true">Choose</button></div>
+            </div>
+            <div class="theme-option" data-theme="wine" tabindex="0">
+                <div class="theme-swatch wine" aria-hidden="true"></div>
+                <div class="theme-label">Wine Red</div>
+                <div class="switch"><button class="theme-select-btn" data-theme="wine" aria-pressed="false">Choose</button></div>
+            </div>
+
+            <hr style="margin:1rem 0; border-color: rgba(255,255,255,0.04);">
+
+            <div style="font-weight:600; margin-bottom:0.6rem; color: rgba(255,255,255,0.85);">Sound</div>
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+                <div>Mute site sounds</div>
+                <div class="switch" style="margin-left:auto;">
+                    <div id="mute-toggle" class="small-toggle" role="switch" aria-checked="false" tabindex="0"><div class="knob"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    <audio id="bg-music" loop>
+    <source src="running-night-393139.mp3" type="audio/mpeg">
+    </audio>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script></script>
+    <script src="fether.js"></script>
+    <script>
+const supabaseUrl = "https://uahvdjovqqqojfqdolpx.supabase.co"; // 🔴 thay URL của bạn
+const supabaseKey = "sb_publishable_67owKfIftS4ryvPbf1mi3g_8Bla3BHh"; // 🔴 thay key của bạn
+
+const supabase = window.supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+</script>
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('button');
+    btn.innerHTML = 'Sending...';
+
+    const fullName = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const message = this.querySelector('textarea').value;
+
+    const { error } = await supabase
+        .from('contacts')
+        .insert([
+            {
+                full_name: fullName,
+                email: email,
+                message: message
+            }
+        ]);
+
+    if (error) {
+        btn.innerHTML = 'Failed ❌';
+        btn.style.background = '#dc3545';
+        console.error(error);
+    } else {
+        btn.innerHTML = 'Sent Successfully ✔';
+        btn.style.background = '#28a745';
+        this.reset();
+    }
+});
+</script>
+
+
+</body>
+</html>
