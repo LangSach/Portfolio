@@ -145,11 +145,22 @@
             music.volume = 0.4;
 
             function setMute(val){
-                muted = !!val;
-                muteToggle.classList.toggle('on', muted);
-                muteToggle.setAttribute('aria-checked', muted);
-                localStorage.setItem('siteMuted', muted);
-            }
+    muted = !!val;
+    muteToggle.classList.toggle('on', muted);
+    muteToggle.setAttribute('aria-checked', muted);
+    localStorage.setItem('siteMuted', muted);
+
+    // THÊM LOGIC ĐIỀU KHIỂN NHẠC TẠI ĐÂY
+    const music = document.getElementById('bg-music');
+    if (music) {
+        if (muted) {
+            music.pause(); // Nếu bật Mute thì dừng nhạc
+        } else {
+            // Nếu tắt Mute thì phát nhạc (chỉ khi người dùng đã tương tác)
+            music.play().catch(err => console.log("Chờ tương tác để phát lại nhạc..."));
+        }
+    }
+}
             
             function playClick() {
     if (muted) return; // Nếu đang mute thì thoát luôn
@@ -173,12 +184,20 @@
 
 // Logic điều khiển nhạc nền
 function playMusic() {
-    if (muted) return; // Không tự phát nếu đang mute
-    music.play().then(() => {
-        document.removeEventListener('click', playMusic);
-        document.removeEventListener('mousemove', playMusic);
-    }).catch(err => console.log("Chờ tương tác..."));
+    const music = document.getElementById('bg-music');
+    // Chỉ phát nếu KHÔNG bị mute
+    if (!muted) {
+        music.play().then(() => {
+            document.removeEventListener('click', playMusic);
+            document.removeEventListener('mousemove', playMusic);
+        }).catch(error => {
+            console.log("Trình duyệt chặn, chờ tương tác...");
+        });
+    }
 }
+
+document.addEventListener('click', playMusic);
+document.addEventListener('mousemove', playMusic);
 
 document.addEventListener('click', playMusic);
 document.addEventListener('mousemove', playMusic);
