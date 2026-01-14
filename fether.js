@@ -183,18 +183,27 @@
 }
 
 // Logic điều khiển nhạc nền
-function playMusic() {
-    const music = document.getElementById('bg-music');
-    // Chỉ phát nếu KHÔNG bị mute
-    if (!muted) {
-        music.play().then(() => {
-            document.removeEventListener('click', playMusic);
-            document.removeEventListener('mousemove', playMusic);
-        }).catch(error => {
-            console.log("Trình duyệt chặn, chờ tương tác...");
-        });
+const audio = document.getElementById("bg-music")
+
+let hasWarned = false
+
+function tryPlayMusic() {
+  audio.play().catch(() => {
+    if (!hasWarned) {
+      console.warn("🔇 Trình duyệt đang chặn nhạc, chờ tương tác người dùng...")
+      hasWarned = true
     }
+  })
 }
+
+// chỉ gọi 1 lần khi load
+tryPlayMusic()
+
+// play lại sau khi user click
+document.addEventListener("click", () => {
+  audio.play()
+}, { once: true })
+
 
 document.addEventListener('click', playMusic);
 document.addEventListener('mousemove', playMusic);
@@ -452,4 +461,5 @@ document.addEventListener('mousemove', playMusic);
         });
 
         animate();
+
     })();
